@@ -1,32 +1,53 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-header></v-header>
+    <router-view :key="$route.fullPath" v-if="$store.state.projects.length"/>
+    <v-footer></v-footer>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import 
+import VHeader from '@/components/Header.vue'
+import VFooter from './components/Footer.vue'
+// import locomotiveMixin from '@/mixins/smoothScroll'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  // mixins: [locomotiveMixin],
+  components: {
+    VHeader, VFooter
+  },
+  async created() {
+    try {
+      await this.$store.dispatch('fetchProjects')
+      // console.log(this.$store.state.projects)
+    } catch (err) {
+      console.error({ err })
     }
   }
+  
+}
+</script>
+
+<style lang="scss">
+@font-face {
+    font-family: 'Helvetica Neue';
+    font-weight: 100;
+    src: url('./assets/fonts/HelveticaNeueLight.woff') format('woff');
+    src: url('./assets/fonts/HelveticaNeueLight.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Helvetica Neue';
+    font-weight: 300;
+    src: url('./assets/fonts/HelveticaNeueMedium.woff') format('woff');
+    src: url('./assets/fonts/HelveticaNeueMedium.woff2') format('woff2');
+}
+@import '@/assets/scss/main.scss';
+
+#app {
+  /* font-family: 'Neue Montreal', $font-sans-serif, Avenir, Helvetica, Arial, sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* padding: 1rem; */
 }
 </style>

@@ -1,0 +1,65 @@
+// @import './fonts';
+@import './variables';
+@import './mixins';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+    --main-color: #FFF;
+    --accent-color: #212929;
+    --secondary-color: #EEEEEE;
+    --project-main-color: #FFF;
+    --project-accent-color: #111;
+    --grid-columns: 12;
+    --grid-gap: .75em;
+    --font-sm: 1rem;
+    --font-md: 3rem;
+    --font-lg: 5rem;
+    --heading-sm: 1.875rem;
+    --heading-md: 2.625rem;
+    --heading-lg: 3.625rem;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.1);
+}
+
+html {
+    font-family: $font-sans-serif, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--main-color);
+
+    &.dark {
+        --main-color: #111111;
+        --accent-color: #FFFFFF;
+        --secondary-color: #646464;
+    }
+}
+
+
+
+
+.flex {
+    display: flex;
+}
+
+.base-button {
+    font-family: inherit;
+    border: 0;
+    background-color: transparent;
+}
