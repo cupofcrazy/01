@@ -1,11 +1,11 @@
 <template>
     <div class="project" :style="{ backgroundImage: `url(${ project.thumbnail.url })` }">
-        <router-link :to="{ name: 'Project', params: { id: project.slug } }">
-        <div class="project__info">
-            <h2>{{ project.title }}</h2>
-            <p>{{ project.year }}</p>
-        </div>
-        <div class="project__background"></div>
+        <router-link class="flex" tag="a" :to="{ name: 'Project', params: { id: project.slug } }">
+            <div class="project__info">
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.year }}</p>
+            </div>
+            <div class="project__background"></div>
         </router-link>
     </div>
 </template>
@@ -23,19 +23,24 @@ export default {
 
 <style lang="scss" scoped>
 .project {
+    border-radius: 4px;
     width: 360px;
     height: 480px;
     background: #eee;
-    padding: 0rem;
+    padding: 0.5rem;
     cursor: pointer;
-    flex: 0 0 auto;
-    margin: 0 1rem 0rem 0;
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0rem 0rem 0;
     position: relative;
     /* background: url(https://fashionfav.com/wp-content/uploads/2020/12/Amber-Witcomb-by-Anya-Holdstock-for-Vogue-Italia-November-2020-2.jpg); */
     background-size: cover;
+    overflow: hidden;
+    /* box-shadow: 0px 8px 30px rgba(0, 0, 0, .25); */
 
     &:hover {
         .project__background {
+            position: absolute;
             z-index: 0;
             opacity: 1;
         }
@@ -44,6 +49,7 @@ export default {
     &__background {
         
         @include pos-abs-fill;
+        /* z-index: -2; */
         background: rgba(1, 1, 1, .4);
         opacity: 0;
         
@@ -51,31 +57,41 @@ export default {
     
     &__info {
         
-        @include pos-abs-fill;
+        
         width: 100%;
-        height: 100%;
-        z-index: 2;
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 1rem;
-        color: var(--main-color);
-        mix-blend-mode: difference;
+        padding: .5rem;
+        background-color: var(--main-color);
+        color: var(--accent-color);
+        border-radius: 4px;
+        /* mix-blend-mode: difference; */
 
         h2 {
             /* text-transform: uppercase; */
-            font-size: 1.625rem;
-            width: 70%;
-            font-weight: 100;
+            font-size: 1.25rem;
+            width: 100%;
+            font-weight: 400;
             line-height: 1;
         }
 
         p {
+            margin-top: 2.625rem;
             font-size: 1rem;
             text-align: right;
-            font-weight: 100;
+            font-weight: 300;
+            color: #aaa;
         }
 
     }
+}
+
+a.flex {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
 }
 </style>

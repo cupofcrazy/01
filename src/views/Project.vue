@@ -42,6 +42,7 @@
 <script>
 // import sanityClient, { query } from '@/sanity'
 import { mapState } from 'vuex'
+import { defaultTransition } from '@/assets/js/transitions'
 
 export default {
     data() {
@@ -64,17 +65,23 @@ export default {
         selectThumbnail(index) {
             this.activeSlide = index
             this.projectDetailsOpen = false
-        } 
+        },
+        enter(el, done) {
+            defaultTransition.enter(el, done)
+        },
+        leave(el, done) {
+            defaultTransition.leave(el, done)
+        }
     },
     created() {
         try {
             
             this.project =  this.projects.find(project => project.slug === this.$route.params.id)
 
-            const root = document.documentElement;
+            // const root = document.documentElement;
 
-            root.style.setProperty('--project-main-color', this.project.thumbnail.metadata.palette.lightVibrant.background)
-            root.style.setProperty('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
+            // root.style.setProperty('--project-main-color', this.project.thumbnail.metadata.palette.lightVibrant.background)
+            // root.style.setProperty('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
 
             console.log(this.project)
 
@@ -119,15 +126,18 @@ export default {
 .slides {
     
     .slide {
-        min-width: 300px;
+        overflow: hidden;
+        min-width: 360px;
         max-width: 640px;
         /* height: 640px; */
         /* background-color: red; */
         margin: 0 1rem;
         display: none;
+        
 
         &.active {
             /* background-color: blue; */
+            border-radius: 4px;
             display: block;
         }
     }
@@ -207,6 +217,7 @@ export default {
         }
 
         &-item {
+            border-radius: 4px;
             cursor: pointer;
             overflow: hidden;
             object-fit: cover;

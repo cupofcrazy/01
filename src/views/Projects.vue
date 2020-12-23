@@ -7,7 +7,17 @@
 
             <ul class="projects__links">
                 <li v-for="project in projects" :key="project.id" class="link">
-                    <router-link :to="{ name: 'Project', params: { id: project.slug }}">{{ project.title }}</router-link>
+                    <router-link :to="{ name: 'Project', params: { id: project.slug }}">
+                        <div class="project">
+                            <div class="project__image">
+                                <lazy-image :src="project.thumbnail.url" alt="Some Caption for an image" :aspectRatio="project.thumbnail.metadata.dimensions.aspectRatio" 
+                                :color="project.thumbnail.metadata.palette.dominant.background" />
+                            </div>
+                            <div class="project__info">
+                                <p>{{ project.title }}</p>
+                            </div>
+                        </div>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -41,26 +51,30 @@ export default {
         }
     }
     &__links {
-        float: right;
-        font-size: 1.625rem;
-        font-weight: 100;
-        margin: 1rem 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
 
-        @include desktop {
-            font-size: 3.625rem;
+        @include tablet {
+            grid-template-columns: repeat(4, 1fr);
         }
-        .link {
-            text-align: right;
-            list-style-type: none;
-            margin: 0;
+        @include desktop {
+            grid-template-columns: repeat(7, 1fr);
+        }
 
-            a {
-                text-decoration: none;
-                color: #aaa;
+        .project {
+            padding: .5rem;
+            border: 1px solid var(--accent-color);
 
-                &:hover {
-                    color: var(--accent-color);
-                }
+            &__image {
+                width: 100%;
+                height: 180px;
+                overflow: hidden;
+            }
+            &__info {
+                margin: 4rem 0 0 0;
+                font-size: .75rem;
+                color: var(--accent-color);
             }
         }
     }

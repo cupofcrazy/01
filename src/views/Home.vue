@@ -26,6 +26,9 @@ export default {
       
     }
   },
+  methods: {
+    
+  },
   computed: {
     randomProject() {
       return this.projects[Math.floor(Math.random() * this.projects.length)]
