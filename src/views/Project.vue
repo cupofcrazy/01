@@ -145,8 +145,8 @@ export default {
 .project {
     position: relative;
     height: 100%;
-    background: var(--project-main-color);
-    transition: all .5s ease;
+    /* background: var(--project-main-color); */
+    /* transition: all .5s ease; */
 }
 .project-info {
     position: absolute;
