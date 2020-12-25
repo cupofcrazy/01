@@ -16,12 +16,14 @@
 import { mapState } from 'vuex'
 import ProjectImage from '@/components/ProjectImage.vue'
 import { indexTransition } from '@/assets/js/transitions'
+import pageTitleMixin from '@/mixins/pageTitle'
 
 
 export default {
   components: { ProjectImage },
   name: 'Home',
-  // mixins: [ locomotiveMixin ],
+  mixins: [ pageTitleMixin ],
+  title: 'Index',
   data() {
     return {
       

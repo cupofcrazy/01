@@ -44,11 +44,14 @@
 // import sanityClient, { query } from '@/sanity'
 import { gsap } from 'gsap'
 import { mapState } from 'vuex'
+import pageTitleMixin from '@/mixins/pageTitle'
 import { projectTransition } from '@/assets/js/transitions'
 import ArrowIcon from '@/components/ui/ArrowIcon.vue'
 
 export default {
-  components: { ArrowIcon },
+    components: { ArrowIcon },
+    mixins: [pageTitleMixin],
+    title() { return this.project.title },
     data() {
         return {
             activeSlide: 0,
@@ -71,10 +74,10 @@ export default {
             this.projectDetailsOpen = false
         },
         enter(el, done) {
-           projectTransition.enter(el, done)
+            projectTransition.enter(el, done)
         },
         leave(el, done) {
-           projectTransition.leave(el, done)
+            projectTransition.leave(el, done)
         },
         // Details Transition
         projectDetailsEnter(el, done) {
@@ -89,7 +92,7 @@ export default {
         projectDetailsLeave(el, done) {
             gsap.to(el, {
                 duration: 1,
-                yPercent: 100,
+                yPercent: -100,
                 clipPath: 'inset(100% 0% 0% 0%)',
                 ease: 'expo.out',
                 onComplete: done
@@ -101,6 +104,7 @@ export default {
             
             this.project =  this.projects.find(project => project.slug === this.$route.params.id)
 
+            document.title = `Tyler Mitchell — ${this.project.title}`
             // const root = document.documentElement;
 
             // root.style.setProperty('--project-main-color', this.project.thumbnail.metadata.palette.lightVibrant.background)

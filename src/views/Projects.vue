@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 .projects {
     .container {
-        padding: 10rem 1rem 1rem 1rem;
+        padding: 10rem 1rem 10rem 1rem;
     }
     &__heading {
         h1 {

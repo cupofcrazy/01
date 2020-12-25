@@ -5,12 +5,12 @@ export default {
         const tl = new gsap.timeline({ onComplete: done })
 
         tl.from(el, {
-            duration: .5,
+            duration: .3,
             autoAlpha: 0,
             ease: 'expo.out',
         })
         .from('.project', {
-            duration: 1,
+            duration: .75,
             scale: 0.15,
             y: 100,
             clipPath: 'inset(100% 0 0 0)',
@@ -18,7 +18,7 @@ export default {
             ease: 'expo.out'
         })
         .from('.project__info', {
-            duration: 1.25,
+            duration: 1.5,
             yPercent: 100,
             // autoAlpha: 0,
             ease: 'expo.out'

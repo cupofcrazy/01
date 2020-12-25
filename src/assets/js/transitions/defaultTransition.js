@@ -11,7 +11,7 @@ export default {
     },
     leave(el, done) {
         gsap.to(el, {
-            duration: .5,
+            duration: .3,
             autoAlpha: 0,
             ease: 'expo.out',
             onComplete: done
