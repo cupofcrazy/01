@@ -5,8 +5,9 @@
                 <h2>{{ project.title }}</h2>
                 <p>{{ project.year }}</p>
             </div>
-            <div class="project__background"></div>
+            
         </router-link>
+        <div class="project__background"></div>
     </div>
 </template>
 
@@ -40,17 +41,19 @@ export default {
 
     &:hover {
         .project__background {
+            transition: all .5s ease;
             position: absolute;
-            z-index: 0;
+            z-index: -1;
             opacity: 1;
         }
     }
 
     &__background {
         
+        transition: all .5s ease;
         @include pos-abs-fill;
-        /* z-index: -2; */
-        background: rgba(1, 1, 1, .4);
+        z-index: -1;
+        background: rgba(1, 1, 1, .5);
         opacity: 0;
         
     }
@@ -73,7 +76,7 @@ export default {
             /* text-transform: uppercase; */
             font-size: 1.25rem;
             width: 100%;
-            font-weight: 400;
+            font-weight: 100;
             line-height: 1;
         }
 

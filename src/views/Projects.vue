@@ -25,9 +25,19 @@
 </template>
 
 <script>
+
 import { mapState } from 'vuex'
+import { allProjectsTransition } from '@/assets/js/transitions'
 
 export default {
+    methods: {
+        enter(el, done) {
+            allProjectsTransition.enter(el, done)
+        },
+        leave(el, done) {
+            allProjectsTransition.leave(el, done)
+        }
+    },
     computed: {
         ...mapState(['projects'])
     }
@@ -41,9 +51,12 @@ export default {
     }
     &__heading {
         h1 {
-            font-size: 3.625rem;
+            font-size: 4.625rem;
+            font-weight: 100;
             width: 90%;
             line-height: 0.95;
+            margin: 0 0 1rem 0;
+            letter-spacing: -2px;
 
             @include desktop {
                 font-size: 8vw;
@@ -59,21 +72,23 @@ export default {
             grid-template-columns: repeat(4, 1fr);
         }
         @include desktop {
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(8, 1fr);
         }
 
         .project {
-            padding: .5rem;
-            border: 1px solid var(--accent-color);
+            /* padding: .5rem; */
+            /* border: 1px solid var(--accent-color); */
 
             &__image {
                 width: 100%;
-                height: 180px;
+                height: 240px;
                 overflow: hidden;
+                border-radius: 4px;
             }
             &__info {
-                margin: 4rem 0 0 0;
-                font-size: .75rem;
+                margin: .5rem 0 1rem 0;
+                font-size: 1rem;
+                font-weight: 100;
                 color: var(--accent-color);
             }
         }

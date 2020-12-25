@@ -1,37 +1,38 @@
 <template>
     <div class="project">
-        <div class="project__details" v-show="projectDetailsOpen">
-            <div class="container">
-                <h2>{{ project.title }} — <span class="highlight">{{ project.year }}</span></h2>
-                <p>{{ project.description }}</p>
-                <div class="gallery">
-                   <div v-for="(image, index) in project.images" :key="index" class="gallery-item" @click="selectThumbnail(index)" 
-                    >
-                        <img :src="image.asset.url" alt="Some caption for Image" width="100%">
-                        <!-- <lazy-image :src="image.asset.url" alt="Some Caption for an image" :aspectRatio="image.asset.metadata.dimensions.aspectRatio" 
-                            :color="image.asset.metadata.palette.dominant.background"
-                        /> -->
+        <transition @enter="projectDetailsEnter" @leave="projectDetailsLeave" :css="false" mode="out-in" appear>
+            <div class="project__details" v-if="projectDetailsOpen">
+                <div class="container">
+                    <h2>{{ project.title }} — <span class="highlight">{{ project.year }}</span></h2>
+                    <p>{{ project.description }}</p>
+                    <div class="gallery">
+                        <button v-for="(image, index) in project.images" :key="index" class="gallery-item" @click="selectThumbnail(index)">
+                                <img :src="image.asset.url" alt="Some caption for Image" width="100%">
+                                <!-- <lazy-image :src="image.asset.url" alt="Some Caption for an image" :aspectRatio="image.asset.metadata.dimensions.aspectRatio" 
+                                    :color="image.asset.metadata.palette.dominant.background"
+                                /> -->
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </transition>
         <div class="project-info">
             <div class="project-info__title">
                 <p>{{ project.title }}</p>
-                <button class="base-button" @click="openProjectDetails">See Details</button>
+                <button class="base-button project-info__button" @click="openProjectDetails">See Details</button>
 
             </div>
             <div class="project-info__index">{{ slideIndex }} — {{ totalSlides }}</div>
         </div>
         <div class="slider">
-            <button class="slider-nav nav__left" @click="prevSlide">←</button>
+            <button class="slider-nav nav__left" @click="prevSlide"><arrow-icon rotate="180" /></button>
             <div class="slides" ref="slides">
                 <div v-for="(image, index) in project.images" :key="index" :class="[ 'slide', { 'active': activeSlide === index } ]"
                 :style="{ width: image.asset.metadata.dimensions.width, height: image.asset.metadata.dimensions.height }">
                     <img :src="image.asset.url" :alt="image.caption" width="100%">
                 </div>
             </div>
-            <button class="slider-nav nav__right" @click="nextSlide">→</button>      
+            <button class="slider-nav nav__right" @click="nextSlide"><arrow-icon /></button>      
         </div>
         
         
@@ -41,10 +42,13 @@
 
 <script>
 // import sanityClient, { query } from '@/sanity'
+import { gsap } from 'gsap'
 import { mapState } from 'vuex'
-import { defaultTransition } from '@/assets/js/transitions'
+import { projectTransition } from '@/assets/js/transitions'
+import ArrowIcon from '@/components/ui/ArrowIcon.vue'
 
 export default {
+  components: { ArrowIcon },
     data() {
         return {
             activeSlide: 0,
@@ -67,10 +71,29 @@ export default {
             this.projectDetailsOpen = false
         },
         enter(el, done) {
-            defaultTransition.enter(el, done)
+           projectTransition.enter(el, done)
         },
         leave(el, done) {
-            defaultTransition.leave(el, done)
+           projectTransition.leave(el, done)
+        },
+        // Details Transition
+        projectDetailsEnter(el, done) {
+            gsap.from(el, {
+                duration: 1,
+                yPercent: 100,
+                clipPath: 'inset(100% 0% 0% 0%)',
+                ease: 'expo.out',
+                onComplete: done
+            })
+        },
+        projectDetailsLeave(el, done) {
+            gsap.to(el, {
+                duration: 1,
+                yPercent: 100,
+                clipPath: 'inset(100% 0% 0% 0%)',
+                ease: 'expo.out',
+                onComplete: done
+            })
         }
     },
     created() {
@@ -121,6 +144,7 @@ export default {
         background-color: transparent;
         font-size: 2rem;
         cursor: pointer;
+        margin: 0 1rem;
     }
 }
 .slides {
@@ -131,7 +155,7 @@ export default {
         max-width: 640px;
         /* height: 640px; */
         /* background-color: red; */
-        margin: 0 1rem;
+        /* margin: 0 1rem; */
         display: none;
         
 
@@ -145,7 +169,7 @@ export default {
 .project {
     position: relative;
     height: 100%;
-    /* background: var(--project-main-color); */
+    background: var(--project-main-color);
     /* transition: all .5s ease; */
 }
 .project-info {
@@ -161,21 +185,30 @@ export default {
     color: var(--project-accent-color);
 
     &__title {
-        font-size: 1.625rem;
+        font-size: 2.625rem;
         font-weight: 100;
         width: 65%;
         line-height: 1;
 
         @include desktop {
             width: 30%;
-            font-size: 3vw;
+            font-size: 4.5vw;
         }
+    }
+    &__button {
+        margin: 1rem 0;
+        cursor: pointer;
+        display: block;
+        
     }
 
     &__index {
         font-size: 2rem;
-        letter-spacing: -2px;
+        letter-spacing: -1px;
         
+        @include desktop {
+            font-size: 3rem;
+        }
     }
 }
 
@@ -195,13 +228,15 @@ export default {
         padding: 10rem  1rem 1rem 1rem;
 
         h2 {
-            font-size: 2.625rem;
+            font-size: 3.625rem;
             font-weight: 100;
+            letter-spacing: -1px;
         }
         p {
             margin: 2rem 0;
             width: 75%;
             font-weight: 100;
+            font-size: 1.25rem;
         }
     }
 
@@ -217,6 +252,7 @@ export default {
         }
 
         &-item {
+            border: 0;
             border-radius: 4px;
             cursor: pointer;
             overflow: hidden;
@@ -242,6 +278,6 @@ export default {
 
 .highlight {
     color: var(--accent-color);
-    opacity: .5;
+    opacity: .75;
 }
 </style>

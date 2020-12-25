@@ -15,6 +15,7 @@
 // import 'locomotive-scroll/dist/locomotive-scroll.min.css'
 import { mapState } from 'vuex'
 import ProjectImage from '@/components/ProjectImage.vue'
+import { indexTransition } from '@/assets/js/transitions'
 
 
 export default {
@@ -27,7 +28,12 @@ export default {
     }
   },
   methods: {
-    
+    enter(el, done) {
+      indexTransition.enter(el, done)
+    },
+    leave(el, done) {
+      indexTransition.leave(el, done)
+    }
   },
   computed: {
     randomProject() {

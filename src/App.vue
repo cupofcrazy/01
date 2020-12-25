@@ -3,7 +3,7 @@
     <v-header></v-header>
 
     <transition @enter="enter" @leave="leave" :css="false" mode="out-in" appear>
-      <router-view :key="$route.fullPath" v-if="$store.state.projects.length"/>
+      <router-view :key="$route.fullPath" v-if="$store.state.projects.length" ref="view" />
     </transition>
     
     <v-footer></v-footer>
@@ -14,7 +14,7 @@
 // import 
 import VHeader from '@/components/Header.vue'
 import VFooter from './components/Footer.vue'
-import { defaultTransition } from '@/assets/js/transitions'
+// import { defaultTransition } from '@/assets/js/transitions'
 // import locomotiveMixin from '@/mixins/smoothScroll'
 
 export default {
@@ -24,10 +24,10 @@ export default {
   },
   methods: {
     enter(el, done) {
-      defaultTransition.enter(el, done)
+      this.$refs.view.enter(el, done)
     },
     leave(el, done) {
-      defaultTransition.leave(el, done)
+      this.$refs.view.leave(el, done)
     }
   },
   async created() {
@@ -37,6 +37,7 @@ export default {
     } catch (err) {
       console.error({ err })
     }
+    console.log(this.$refs.view)
   }
   
 }
