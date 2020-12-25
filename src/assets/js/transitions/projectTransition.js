@@ -1,8 +1,8 @@
-import { gsap } from 'gsap'
+import { TweenMax, TimelineMax } from 'gsap'
 
 export default {
     enter(el, done) {
-        const tl = new gsap.timeline({ onComplete: done })
+        const tl = new TimelineMax({ onComplete: done })
 
         tl.from(el, {
             duration: .5,
@@ -21,7 +21,7 @@ export default {
         }, '<.25')
     },
     leave(el, done) {
-        gsap.to(el, {
+        TweenMax.to(el, {
             duration: .25,
             autoAlpha: 0,
             ease: 'expo.out',

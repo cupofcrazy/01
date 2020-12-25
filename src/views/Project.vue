@@ -42,7 +42,7 @@
 
 <script>
 // import sanityClient, { query } from '@/sanity'
-import { gsap } from 'gsap'
+import { TweenMax } from 'gsap'
 import { mapState } from 'vuex'
 import pageTitleMixin from '@/mixins/pageTitle'
 import { projectTransition } from '@/assets/js/transitions'
@@ -81,7 +81,7 @@ export default {
         },
         // Details Transition
         projectDetailsEnter(el, done) {
-            gsap.from(el, {
+           TweenMax.from(el, {
                 duration: 1,
                 yPercent: 100,
                 clipPath: 'inset(100% 0% 0% 0%)',
@@ -90,7 +90,7 @@ export default {
             })
         },
         projectDetailsLeave(el, done) {
-            gsap.to(el, {
+           TweenMax.to(el, {
                 duration: 1,
                 yPercent: -100,
                 clipPath: 'inset(100% 0% 0% 0%)',

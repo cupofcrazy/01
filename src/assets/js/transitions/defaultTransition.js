@@ -1,8 +1,8 @@
-import { gsap } from 'gsap'
+import { TweenMax } from 'gsap'
 
 export default {
     enter(el, done) {
-        gsap.from(el, {
+        TweenMax.from(el, {
             duration: .5,
             autoAlpha: 0,
             ease: 'expo.out',
@@ -10,7 +10,7 @@ export default {
         })
     },
     leave(el, done) {
-        gsap.to(el, {
+        TweenMax.to(el, {
             duration: .3,
             autoAlpha: 0,
             ease: 'expo.out',
