@@ -46,13 +46,13 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  padding: .5rem;
+  padding: 1rem;
 
   .container {
     margin: 10rem 0 10rem 0;
   }
   &__heading {
-    font-size: 5vw;
+    
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -62,8 +62,13 @@ export default {
       letter-spacing: -1px;
       font-weight: 100;
       line-height: 1;
+      font-size: 2rem;
+
       &:nth-of-type(2) {
+        width: 70%;
+        font-size: 13vw;
         text-align: right;
+        
       }
     }
   }
