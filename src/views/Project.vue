@@ -20,7 +20,7 @@
             <div class="slides" ref="slides">
                 <div v-for="(image, index) in project.images" :key="index" :class="[ 'slide', { 'active': activeSlide === index } ]"
                 :style="{ width: image.asset.metadata.dimensions.width, height: image.asset.metadata.dimensions.height }">
-                    <img :src="image.asset.url" :alt="image.caption" width="100%">
+                    <img :src="image.asset.url" :alt="`${project.title } photo`" width="100%">
                 </div>
             </div>
             <button class="slider-nav nav__right" @click="nextSlide"><arrow-icon /></button>      

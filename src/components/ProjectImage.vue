@@ -85,7 +85,7 @@ export default {
             font-size: 1rem;
             text-align: right;
             font-weight: 300;
-            color: #aaa;
+            color: var(--accent-color);
         }
 
     }

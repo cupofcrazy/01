@@ -8,7 +8,7 @@
             <p>{{ project.description }}</p>
             <div class="gallery">
                 <button v-for="(image, index) in project.images" :key="index" class="gallery-item" @click="selectThumbnail(index)">
-                        <img :src="image.asset.url" alt="Some caption for Image" width="100%">
+                        <img :src="image.asset.url" :alt="`${project.title} image`" width="100%">
                         <!-- <lazy-image :src="image.asset.url" alt="Some Caption for an image" :aspectRatio="image.asset.metadata.dimensions.aspectRatio" 
                             :color="image.asset.metadata.palette.dominant.background"
                         /> -->
