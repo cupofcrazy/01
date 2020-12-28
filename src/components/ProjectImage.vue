@@ -25,8 +25,8 @@ export default {
 <style lang="scss" scoped>
 .project {
     border-radius: 4px;
-    width: 360px;
-    height: 480px;
+    width: 320px;
+    height: 440px;
     background: #eee;
     padding: 0.5rem;
     cursor: pointer;
@@ -34,10 +34,8 @@ export default {
     align-items: flex-end;
     margin: 0 0rem 0rem 0;
     position: relative;
-    /* background: url(https://fashionfav.com/wp-content/uploads/2020/12/Amber-Witcomb-by-Anya-Holdstock-for-Vogue-Italia-November-2020-2.jpg); */
     background-size: cover;
     overflow: hidden;
-    /* box-shadow: 0px 8px 30px rgba(0, 0, 0, .25); */
 
     &:hover {
         .project__background {

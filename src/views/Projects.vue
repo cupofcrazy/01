@@ -55,7 +55,7 @@ export default {
     &__heading {
         margin: 0  0 3rem 0;
         h1 {
-            font-size: 4.625rem;
+            font-size: 3.625rem;
             font-weight: 100;
             width: 90%;
             line-height: 0.95;
@@ -76,12 +76,10 @@ export default {
             grid-template-columns: repeat(4, 1fr);
         }
         @include desktop {
-            grid-template-columns: repeat(8, 1fr);
+            grid-template-columns: repeat(6, 1fr);
         }
 
         .project {
-            /* padding: .5rem; */
-            /* border: 1px solid var(--accent-color); */
 
             &__image {
                 width: 100%;

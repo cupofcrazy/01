@@ -8,8 +8,8 @@
         />
         <div class="project-info">
            
-            <div class="project-info__title">
-                <p>{{ project.title }}</p>
+            <div class="container">
+                <h1 class="project-info__title">{{ project.title }}</h1>
                 <button class="base-button project-info__button" @click="openProjectDetails" aria-label="See Details">See Details</button>
 
             </div>
@@ -124,16 +124,20 @@ export default {
         background-color: transparent;
         font-size: 2rem;
         cursor: pointer;
-        margin: 0 1rem;
+        padding: 0 1rem;
     }
 }
 .slides {
     
     .slide {
         overflow: hidden;
-        min-width: 360px;
-        max-width: 640px;
+        min-width: 320px;
+        max-width: 600px;
         display: none;
+
+        @include tablet {
+            width: 480px;
+        }
         
 
         &.active {
@@ -160,20 +164,26 @@ export default {
     color: var(--accent-color);
 
     &__title {
-        font-size: 2rem;
-        font-weight: 100;
+        font-size: 1.625rem;
+        font-weight: 500;
         width: 65%;
         line-height: 1;
+        letter-spacing: -1px;
+
+        @include tablet {
+            font-size: 2rem;
+        }
 
         @include desktop {
-            width: 30%;
-            font-size: 4.5vw;
+            width: 100%;
+            font-size: 3rem;
         }
     }
     &__button {
         margin: 1rem 0;
         cursor: pointer;
         display: block;
+        font-weight: 100;
         
     }
 
