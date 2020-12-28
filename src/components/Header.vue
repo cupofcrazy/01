@@ -1,14 +1,26 @@
 <template>
     <header class="header">
-        <router-link class="header-link" to="/">Tyler Mitchell</router-link>
-        <!-- <h3 class="header-title">Tyler Mitchell</h3> -->
+        <div>
+            <router-link class="header-link" to="/" v-if="!isProjectPage">Tyler Mitchell <span v-if="$route.name === 'Home'">is a New York <br/>based photographer</span></router-link>
+             <button class="base-button header-link" to="/" v-else @click="$router.go(-1)"><arrow-icon rotate="180" :style="{ width: '20px', height: '20px' }" /></button>
+        </div>
+        <router-link class="header-link" to="/" v-if="isProjectPage">Tyler Mitchell</router-link>
         <router-link class="header-link" to="/profile">Profile</router-link>
     </header>
 </template>
 
 <script>
+import ArrowIcon from '@/components/ui/ArrowIcon.vue'
+
 export default {
-    
+    components: {
+        ArrowIcon
+    },
+    computed: {
+        isProjectPage() {
+            return this.$route.name === 'Project'
+        }
+    }
 }
 </script>
 
@@ -22,20 +34,31 @@ export default {
     font-size: 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 1.5rem 1rem;
     z-index: 9999;
     mix-blend-mode: difference;
 
     &-link {
         display: block;
-        font-size: 1.625rem;
-        color: #AAA;
+        font-size: 1.25rem;
+        color: #FFF;
         text-decoration: none;
         font-weight: 100;
+        line-height: 1;
+
+        @include tablet {
+            font-size: 1.625rem;
+        }
 
         &:hover {
-            color: var(--main-color);
+            /* color: var(--main-color); */
+        }
+
+        &__back {
+            display: inline-block;
+            margin-left: .5rem;
+            margin-top: -100px;
         }
         
     }
@@ -44,5 +67,10 @@ export default {
         font-size: 1.25rem;
         font-weight: 500;
     }
+}
+
+svg {
+    width: 28px;
+    height: 28px;
 }
 </style>

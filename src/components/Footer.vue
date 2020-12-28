@@ -3,7 +3,7 @@
         <div class="footer__projects">
             <router-link class="footer-link" to="/projects">Projects</router-link>
         </div>
-        <div class="footer__circle">🌏</div>
+        <div class="footer__circle"></div>
     </div>
 </template>
 
@@ -22,17 +22,27 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    mix-blend-mode: difference;
+    
 
     &__projects {
         font-size: 1.625rem;
         font-weight: 100;
+        mix-blend-mode: difference;
+        color: var(--accent-color);
 
         .footer-link {
             text-decoration: none;
-            color: #AAA;
+            color: var(--accent-color);
+            
             
         }
+    }
+    &__circle {
+        width: 36px;
+        height: 36px;
+        background: var(--project-main-color);
+        border-radius: 50%;
+        transition: all 1s ease;
     }
 }
 </style>

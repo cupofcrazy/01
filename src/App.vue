@@ -47,12 +47,14 @@ export default {
 @font-face {
     font-family: 'Helvetica Neue';
     font-weight: 100;
+    font-display: swap;
     src: url('./assets/fonts/HelveticaNeueLight.woff') format('woff');
     src: url('./assets/fonts/HelveticaNeueLight.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Helvetica Neue';
     font-weight: 300;
+    font-display: swap;
     src: url('./assets/fonts/HelveticaNeueMedium.woff') format('woff');
     src: url('./assets/fonts/HelveticaNeueMedium.woff2') format('woff2');
 }
@@ -62,6 +64,7 @@ export default {
   /* font-family: 'Neue Montreal', $font-sans-serif, Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--main-color);
   /* padding: 1rem; */
 }
 </style>

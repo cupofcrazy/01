@@ -2,7 +2,7 @@
     <div class="projects">
         <div class="container">
             <div class="projects__heading">
-                <h1>The Photography of Tyler Mitchell</h1>
+                <h1>Photography</h1>
             </div>
 
             <ul class="projects__links">
@@ -10,8 +10,10 @@
                     <router-link :to="{ name: 'Project', params: { id: project.slug }}">
                         <div class="project">
                             <div class="project__image">
-                                <lazy-image :src="project.thumbnail.url" alt="Some Caption for an image" :aspectRatio="project.thumbnail.metadata.dimensions.aspectRatio" 
-                                :color="project.thumbnail.metadata.palette.dominant.background" />
+                                <img :src="project.thumbnail.url" alt="Some Caption for an image" />
+                                <!-- <lazy-image :src="project.thumbnail.url" alt="Some Caption for an image" :aspectRatio="project.thumbnail.metadata.dimensions.aspectRatio" 
+                                :color="project.thumbnail.metadata.palette.dominant.background" /> -->
+
                             </div>
                             <div class="project__info">
                                 <p>{{ project.title }}</p>
@@ -46,10 +48,12 @@ export default {
 
 <style lang="scss" scoped>
 .projects {
+    /* background-color: var(--main-color); */
     .container {
         padding: 10rem 1rem 10rem 1rem;
     }
     &__heading {
+        margin: 0  0 3rem 0;
         h1 {
             font-size: 4.625rem;
             font-weight: 100;
@@ -59,7 +63,7 @@ export default {
             letter-spacing: -2px;
 
             @include desktop {
-                font-size: 8vw;
+                font-size: 12vw;
             }
         }
     }
@@ -84,6 +88,13 @@ export default {
                 height: 240px;
                 overflow: hidden;
                 border-radius: 4px;
+                
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
             &__info {
                 margin: .5rem 0 1rem 0;

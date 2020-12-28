@@ -19,12 +19,12 @@ export default {
         .from('.link', {
             duration: 1,
             y: 30,
-            stagger: .05,
+            stagger: .025,
             scale: .15,
             autoAlpha: 0,
             clipPath: 'inset(100% 0 0 0)',
             ease: 'expo.out'
-        }, '<.25')
+        }, '<.15')
     },
     leave(el, done) {
         TweenMax.to(el, {

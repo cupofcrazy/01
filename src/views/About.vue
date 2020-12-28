@@ -2,7 +2,7 @@
   <div class="about">
     <div class="container">
       <div class="about__heading">
-        <h1>Profile</h1>
+        <h2>Profile</h2>
         <h1>About Tyler Mitchell</h1>
       </div>
       <div class="about__info">
@@ -47,6 +47,7 @@ export default {
 <style lang="scss" scoped>
 .about {
   padding: 1rem;
+  /* background-color: var(--main-color); */
 
   .container {
     margin: 10rem 0 10rem 0;
@@ -57,20 +58,28 @@ export default {
     align-items: flex-end;
     justify-content: space-between;
     margin: 0 0 1rem 0;
+    
 
-    h1 {
+    h2 {
       letter-spacing: -1px;
       font-weight: 100;
       line-height: 1;
-      font-size: 2rem;
+      font-size: 2.25rem;
 
-      &:nth-of-type(2) {
-        width: 70%;
-        font-size: 13vw;
-        text-align: right;
+      @include desktop {
+        font-size: 6rem;
+      }
+
+      
+    }
+    h1 {
+      font-weight: 100;
+      width: 70%;
+      font-size: 13vw;
+      text-align: right;
+      line-height: 1;
         
       }
-    }
   }
 
   &__info {

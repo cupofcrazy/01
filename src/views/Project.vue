@@ -1,7 +1,13 @@
 <template>
     <div class="project">
-        <project-details :project="project" @selectThumbnail="selectThumbnail" v-if="projectDetailsOpen" />
+        <project-details
+            :project="project"
+            @selectThumbnail="selectThumbnail"
+            @closeProjectDetails="closeProjectDetails"
+            v-if="projectDetailsOpen"
+        />
         <div class="project-info">
+           
             <div class="project-info__title">
                 <p>{{ project.title }}</p>
                 <button class="base-button project-info__button" @click="openProjectDetails">See Details</button>
@@ -22,13 +28,13 @@
         
         
     </div>
-    
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import pageTitleMixin from '@/mixins/pageTitle'
 import { projectTransition } from '@/assets/js/transitions'
+
 
 export default {
     components: {
@@ -54,6 +60,9 @@ export default {
         openProjectDetails() {
             this.projectDetailsOpen = true
         },
+        closeProjectDetails() {
+            this.projectDetailsOpen = false
+        },
         selectThumbnail(index) {
             this.activeSlide = index
             this.projectDetailsOpen = false
@@ -72,10 +81,10 @@ export default {
             this.project =  this.projects.find(project => project.slug === this.$route.params.id)
 
             document.title = `Tyler Mitchell — ${this.project.title}`
-            // const root = document.documentElement;
+            const root = document.documentElement;
 
-            // root.style.setProperty('--project-main-color', this.project.thumbnail.metadata.palette.lightVibrant.background)
-            // root.style.setProperty('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
+            root.style.setProperty('--project-main-color', this.project.thumbnail.metadata.palette.lightVibrant.background)
+            root.style.setProperty('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
 
             console.log(this.project)
 
@@ -136,7 +145,7 @@ export default {
 .project {
     position: relative;
     height: 100%;
-    background: var(--project-main-color);
+    /* background: var(--main-color); */
 }
 .project-info {
     position: absolute;
@@ -148,10 +157,10 @@ export default {
     align-items: flex-start;
     padding: 1rem;
     width: 100%;
-    color: var(--project-accent-color);
+    color: var(--accent-color);
 
     &__title {
-        font-size: 2.625rem;
+        font-size: 2rem;
         font-weight: 100;
         width: 65%;
         line-height: 1;
@@ -169,7 +178,7 @@ export default {
     }
 
     &__index {
-        font-size: 2rem;
+        font-size: 1.625rem;
         letter-spacing: -1px;
         
         @include desktop {
