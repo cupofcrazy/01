@@ -2,12 +2,12 @@
 <transition @enter="projectDetailsEnter" @leave="projectDetailsLeave" :css="false" mode="out-in" appear>
     <div class="project__details">
         <div class="container">
-            <button class="project__details-close base-button" @click="closeProjectDetails"><icon-cancel /></button>
+            <button class="project__details-close base-button" @click="closeProjectDetails" aria-label="Close project details"><icon-cancel /></button>
             
             <h1>{{ project.title }} — <span class="highlight">{{ project.year }}</span></h1>
             <p>{{ project.description }}</p>
             <div class="gallery">
-                <button v-for="(image, index) in project.images" :key="index" class="gallery-item" @click="selectThumbnail(index)">
+                <button v-for="(image, index) in project.images" :key="index" class="gallery-item" @click="selectThumbnail(index)" aria-label="Select image thumbnail">
                         <img :src="image.asset.url" :alt="`${project.title} image`" width="100%">
                         <!-- <lazy-image :src="image.asset.url" alt="Some Caption for an image" :aspectRatio="image.asset.metadata.dimensions.aspectRatio" 
                             :color="image.asset.metadata.palette.dominant.background"

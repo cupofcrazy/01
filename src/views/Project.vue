@@ -10,20 +10,20 @@
            
             <div class="project-info__title">
                 <p>{{ project.title }}</p>
-                <button class="base-button project-info__button" @click="openProjectDetails">See Details</button>
+                <button class="base-button project-info__button" @click="openProjectDetails" aria-label="See Details">See Details</button>
 
             </div>
             <div class="project-info__index">{{ slideIndex }} — {{ totalSlides }}</div>
         </div>
         <div class="slider">
-            <button class="slider-nav nav__left" @click="prevSlide"><arrow-icon rotate="180" /></button>
+            <button class="slider-nav nav__left" aria-label="Previous slide button" @click="prevSlide"><arrow-icon rotate="180" /></button>
             <div class="slides" ref="slides">
                 <div v-for="(image, index) in project.images" :key="index" :class="[ 'slide', { 'active': activeSlide === index } ]"
                 :style="{ width: image.asset.metadata.dimensions.width, height: image.asset.metadata.dimensions.height }">
                     <img :src="image.asset.url" :alt="`${project.title } photo`" width="100%">
                 </div>
             </div>
-            <button class="slider-nav nav__right" @click="nextSlide"><arrow-icon /></button>      
+            <button class="slider-nav nav__right" @click="nextSlide" aria-label="Next slide button"><arrow-icon /></button>      
         </div>
         
         
