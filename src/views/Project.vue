@@ -39,7 +39,7 @@ import { projectTransition } from '@/assets/js/transitions'
 export default {
     components: {
         ArrowIcon: () => import('@/components/ui/ArrowIcon.vue'),
-        ProjectDetails: () => import('@/components/ProjectDetails.vue')
+        ProjectDetails: () => import('@/components/project/ProjectDetails.vue')
     },
     mixins: [ pageTitleMixin ],
     title() { return this.project.title },
@@ -83,7 +83,7 @@ export default {
             this.$setPageTitle(this.project.title)
             // const root = document.documentElement;
 
-            this.$setTheme('--project-main-color', this.project.thumbnail.metadata.palette.darkMuted.background)
+            this.$setTheme('--project-main-color', this.project.thumbnail.metadata.palette.darkVibrant.background)
             // this.$setTheme('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
 
             console.log(this.project)
@@ -132,7 +132,7 @@ export default {
     
     .slide {
         overflow: hidden;
-        min-width: 320px;
+        min-width: 60%;
         max-width: 640px;
         display: none;
 
@@ -146,7 +146,7 @@ export default {
         
 
         &.active {
-            border-radius: 4px;
+            border-radius: $border-radius;
             display: block;
         }
     }
@@ -158,7 +158,7 @@ export default {
 }
 .project-info {
     position: absolute;
-    top: 5rem;
+    top: 4rem;
     left: 0;
     z-index: 5;
     display: flex;
@@ -169,11 +169,15 @@ export default {
     color: var(--accent-color);
 
     &__title {
-        font-size: 1.625rem;
+        font-size: 1.25rem;
         font-weight: 500;
         width: 65%;
         line-height: 1;
         letter-spacing: -1px;
+
+        @include phone {
+            font-size: 1.625rem;
+        }
 
         @include tablet {
             font-size: 2rem;
@@ -193,8 +197,12 @@ export default {
     }
 
     &__index {
-        font-size: 1.625rem;
+        font-size: 1.25rem;
         letter-spacing: -1px;
+
+        @include phone {
+            font-size: 1.625rem;
+        }
         
         @include desktop {
             font-size: 3rem;

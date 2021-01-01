@@ -16,6 +16,13 @@
           His first solo exhibition ‘I Can Make You Feel Good’ at Foam Fotografiemuseum Amsterdam (2019) premiered video works including ‘Idyllic Space.’ An iteration of this show is now on view at the International Center of Photography (ICP) in New York.
           Mitchell has lectured at a number of institutions on the politics of image making including Harvard University, Paris Photo and the International Center of Photography (ICP).
         </p>
+        
+      </div>
+      <div class="about__image row">
+        <img src="https://cdn.sanity.io/images/eefpfqmk/production/5731168e7767a7e7a532272132b2cd355d045598-807x1000.jpg" alt="Tyler Mitchell Profile Image">
+      </div>
+
+      <div class="about__info">
         <p class="row">
           In 2020 Mitchell was announced as the recipient of the Gordon Parks Fellowship which will support a new project that reflects and draws inspiration from Parks’ central themes of representation and social justice. Mitchell’s fellowship will culminate in an exhibition of the new works at the Gordon Parks Foundation Gallery in Pleasantville, NY.
         <p class="row">
@@ -26,9 +33,6 @@
 
         </p>
       </div>
-        <div class="about__image row">
-          <img src="https://cdn.sanity.io/images/eefpfqmk/production/5731168e7767a7e7a532272132b2cd355d045598-807x1000.jpg" alt="Tyler Mitchell Profile Image">
-        </div>
     </div>
   </div>
 </template>
@@ -75,7 +79,7 @@ export default {
       letter-spacing: -1px;
       font-weight: 100;
       line-height: 1;
-      font-size: 2.25rem;
+      font-size: 1.625rem;
 
       @include desktop {
         font-size: 6rem;
@@ -100,9 +104,9 @@ export default {
     p {
       
       width: 100%;
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 100;
-      margin: 0 0 2rem 0;
+      margin: 0 0 1rem 0;
 
       @include desktop {
         font-size: 1.625rem;
@@ -114,9 +118,9 @@ export default {
     
   }
   .about__image {
-      margin: 1rem 0 0 auto;
+      margin: 1rem 0 2rem auto;
       width: 70%;
-      border-radius: 4px;
+      border-radius: $border-radius;
       overflow: hidden;
 
        @include desktop {

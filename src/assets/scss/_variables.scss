@@ -1,8 +1,13 @@
 // Screen sizes
-$screen-sm: 38rem;
-$screen-md: 44rem;
-$screen-lg: 55rem;
+$screen-xs: 320px;
+$screen-sm: 400px;
+$screen-md: 980px;
+$screen-lg: 1300px;
 $screen-xl: 80rem;
+
+$border-radius: 4px;
+
+
 
 // Fonts
 $font-sans-serif: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', sans-serif;

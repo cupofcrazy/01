@@ -3,11 +3,13 @@
     justify-content: center;
     align-items: center;
 }
+
 @mixin phone {
     @media screen and (min-width: $screen-sm) {
         @content;
     }
 }
+
 @mixin tablet {
     @media screen and (min-width: $screen-md) {
         @content;

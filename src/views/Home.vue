@@ -2,7 +2,7 @@
   <div class="home" ref="home">
     <div class="container">
       <!-- <h1>Selected Works</h1> -->
-      <project-image :project="randomProject" />
+      <project-card :project="randomProject" />
       <!-- <router-link class="projects-link" to="/projects">See all works →</router-link> -->
     </div>
     
@@ -14,12 +14,12 @@
 
 // import 'locomotive-scroll/dist/locomotive-scroll.min.css'
 import { mapState } from 'vuex'
-import ProjectImage from '@/components/ProjectImage.vue'
+import ProjectCard from '@/components/project/ProjectCard.vue'
 import { indexTransition } from '@/assets/js/transitions'
 
 
 export default {
-  components: { ProjectImage },
+  components: { ProjectCard },
   name: 'Home',
   data() {
     return {

@@ -1,7 +1,7 @@
 <template>
     <div class="project" :style="{ backgroundImage: `url(${ project.thumbnail.url })` }">
         <router-link class="flex" tag="a" :to="{ name: 'Project', params: { id: project.slug } }">
-            <div class="project__info" :style="{ backgroundColor: project.thumbnail.metadata.palette.darkMuted.background }">
+            <div class="project__info" :style="{ backgroundColor: accentColor }">
                 <h2>{{ project.title }}</h2>
                 <p>{{ project.year }}</p>
             </div>
@@ -13,10 +13,16 @@
 
 <script>
 export default {
+    name: 'ProjectCard',
     props: {
         project: {
             type: Object,
             required: true
+        }
+    },
+    computed: {
+        accentColor() {
+            return this.project.thumbnail.metadata.palette.darkVibrant.background
         }
     }
 }
@@ -24,9 +30,9 @@ export default {
 
 <style lang="scss" scoped>
 .project {
-    border-radius: 4px;
-    width: 320px;
-    height: 440px;
+    border-radius: $border-radius;
+    width: 280px;
+    height: 360px;
     background: #eee;
     padding: 0.5rem;
     cursor: pointer;
@@ -44,6 +50,16 @@ export default {
             z-index: -1;
             opacity: 1;
         }
+    }
+
+    @include phone {
+        width: 320px;
+        height: 440px;
+    }
+
+    @include tablet {
+        width: 360px;
+        height: 480px;
     }
 
     &__background {
@@ -67,7 +83,7 @@ export default {
         padding: .5rem;
         background-color: var(--main-color);
         color: var(--main-color);
-        border-radius: 4px;
+        border-radius: $border-radius;
         /* mix-blend-mode: difference; */
 
         h2 {

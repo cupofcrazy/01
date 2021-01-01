@@ -69,7 +69,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 500;
+    z-index: 100;
     background: var(--project-main-color);
     overflow-y: scroll;
 
@@ -78,7 +78,6 @@ export default {
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        border: 1px solid var(--accent-color);
         margin: 0 auto 1em auto;
         display: flex;
         align-items: center;
@@ -95,11 +94,19 @@ export default {
         padding: 6rem  1rem 1rem 1rem;
 
         h1 {
-            font-size: 3.625rem;
+            font-size: 1.625rem;
             font-weight: 100;
             letter-spacing: -1px;
             text-align: center;
             color: var(--main-color);
+
+            @include phone {
+                font-size: 2rem;
+            }
+
+            @include tablet {
+                font-size: 4rem;
+            }
 
             @include desktop {
                 font-size: 8rem;
@@ -109,9 +116,17 @@ export default {
             margin: 2rem auto;
             width: 100%;
             font-weight: 100;
-            font-size: 1.25rem;
+            font-size: 1rem;
             text-align: center;
             color: var(--main-color);
+
+            @include tablet {
+                font-size: 1.25rem;
+            }
+
+            @include desktop {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -128,7 +143,7 @@ export default {
 
         &-item {
             border: 0;
-            border-radius: 4px;
+            border-radius: $border-radius;
             cursor: pointer;
             overflow: hidden;
             object-fit: cover;

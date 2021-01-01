@@ -41,19 +41,16 @@ export default {
 
     &-link {
         display: block;
-        font-size: 1.25rem;
+        font-size: 1rem;
         color: #FFF;
         text-decoration: none;
         font-weight: 100;
         line-height: 1;
 
-        @include tablet {
-            font-size: 1.625rem;
+        @include phone {
+            font-size: 1.25rem;
         }
 
-        &:hover {
-            /* color: var(--main-color); */
-        }
 
         &__back {
             display: inline-block;
