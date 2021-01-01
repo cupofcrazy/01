@@ -2,7 +2,7 @@
 <transition @enter="projectDetailsEnter" @leave="projectDetailsLeave" :css="false" mode="out-in" appear>
     <div class="project__details">
         <div class="container">
-            <button class="project__details-close base-button" @click="closeProjectDetails" aria-label="Close project details"><icon-cancel /></button>
+            <button class="project__details-close base-button" @click="closeProjectDetails" aria-label="Close project details" title="Close project details"><icon-cancel /></button>
             
             <h1>{{ project.title }} — <span class="highlight">{{ project.year }}</span></h1>
             <p>{{ project.description }}</p>
@@ -74,7 +74,7 @@ export default {
     overflow-y: scroll;
 
     &-close {
-        background-color: var(--accent-color);
+        background-color: var(--main-color);
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -99,6 +99,7 @@ export default {
             font-weight: 100;
             letter-spacing: -1px;
             text-align: center;
+            color: var(--main-color);
 
             @include desktop {
                 font-size: 8rem;
@@ -110,6 +111,7 @@ export default {
             font-weight: 100;
             font-size: 1.25rem;
             text-align: center;
+            color: var(--main-color);
         }
     }
 

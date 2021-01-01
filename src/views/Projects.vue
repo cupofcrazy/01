@@ -40,6 +40,12 @@ export default {
             allProjectsTransition.leave(el, done)
         }
     },
+    created() {
+        this.$setPageTitle('Projects')
+    },
+    mounted() {
+        this.$setTheme('--project-main-color')
+    },
     computed: {
         ...mapState(['projects'])
     }

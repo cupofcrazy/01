@@ -1,5 +1,5 @@
 <template>
-    <div class="project">
+    <div class="project" v-if="project">
         <project-details
             :project="project"
             @selectThumbnail="selectThumbnail"
@@ -80,17 +80,18 @@ export default {
             
             this.project =  this.projects.find(project => project.slug === this.$route.params.id)
 
-            document.title = `Tyler Mitchell — ${this.project.title}`
-            const root = document.documentElement;
+            this.$setPageTitle(this.project.title)
+            // const root = document.documentElement;
 
-            root.style.setProperty('--project-main-color', this.project.thumbnail.metadata.palette.lightVibrant.background)
-            root.style.setProperty('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
+            this.$setTheme('--project-main-color', this.project.thumbnail.metadata.palette.darkMuted.background)
+            // this.$setTheme('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
 
             console.log(this.project)
 
             
         } catch (err) {
-            console.error({ err })
+            console.error(err)
+            this.$router.replace('/404')
         }
     },
     mounted() {
@@ -132,11 +133,15 @@ export default {
     .slide {
         overflow: hidden;
         min-width: 320px;
-        max-width: 600px;
+        max-width: 640px;
         display: none;
 
         @include tablet {
-            width: 480px;
+            /* width: 480px; */
+        }
+
+        @include desktop {
+            /* width: 640px; */
         }
         
 

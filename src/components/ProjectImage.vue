@@ -1,7 +1,7 @@
 <template>
     <div class="project" :style="{ backgroundImage: `url(${ project.thumbnail.url })` }">
         <router-link class="flex" tag="a" :to="{ name: 'Project', params: { id: project.slug } }">
-            <div class="project__info">
+            <div class="project__info" :style="{ backgroundColor: project.thumbnail.metadata.palette.darkMuted.background }">
                 <h2>{{ project.title }}</h2>
                 <p>{{ project.year }}</p>
             </div>
@@ -66,7 +66,7 @@ export default {
         justify-content: space-between;
         padding: .5rem;
         background-color: var(--main-color);
-        color: var(--accent-color);
+        color: var(--main-color);
         border-radius: 4px;
         /* mix-blend-mode: difference; */
 
@@ -74,7 +74,7 @@ export default {
             /* text-transform: uppercase; */
             font-size: 1.25rem;
             width: 100%;
-            font-weight: 100;
+            font-weight: 300;
             line-height: 1;
         }
 
@@ -83,7 +83,7 @@ export default {
             font-size: 1rem;
             text-align: right;
             font-weight: 300;
-            color: var(--accent-color);
+            color: var(--main-color);
         }
 
     }

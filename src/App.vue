@@ -37,7 +37,10 @@ export default {
     } catch (err) {
       console.error({ err })
     }
-    console.log(this.$refs.view)
+    // console.log(this.$refs.view)
+  },
+  mounted() {
+    
   }
   
 }

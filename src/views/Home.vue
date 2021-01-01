@@ -16,14 +16,11 @@
 import { mapState } from 'vuex'
 import ProjectImage from '@/components/ProjectImage.vue'
 import { indexTransition } from '@/assets/js/transitions'
-import pageTitleMixin from '@/mixins/pageTitle'
 
 
 export default {
   components: { ProjectImage },
   name: 'Home',
-  mixins: [ pageTitleMixin ],
-  title: 'Index',
   data() {
     return {
       
@@ -49,7 +46,7 @@ export default {
     // console.log(this.arts)
   },
   mounted() {
-   
+    this.$setTheme('--project-main-color', '#111111')
   },
   destroyed() {
 
