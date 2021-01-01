@@ -31,4 +31,4 @@ const siteSettingsPlugin =  {
     }
 }
 
-export default siteSettingsPlugin
+export default siteSettingsPlugin;
