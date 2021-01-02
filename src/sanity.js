@@ -2,7 +2,7 @@ import sanityClient from '@sanity/client'
 
 
 const options = {
-    projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
+    projectId: process.env.VUE_APP_SANITY_PROJECT_ID || 'eefpfqmk',
     dataset: 'production',
     useCdn: true
 }
