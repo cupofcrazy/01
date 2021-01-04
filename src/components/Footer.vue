@@ -1,14 +1,18 @@
 <template>
-    <div class="footer">
-        <div class="footer__projects">
-            <router-link class="footer-link" :to="{ name: 'Projects' }">Photography</router-link>
+    <transition-appear>
+        <div class="footer">
+            <div class="footer__projects">
+                <router-link class="footer-link" :to="{ name: 'Projects' }">Photography</router-link>
+            </div>
+            <div class="footer__circle"></div>
         </div>
-        <div class="footer__circle"></div>
-    </div>
+    </transition-appear>
 </template>
 
 <script>
+import TransitionAppear from './TransitionAppear.vue'
 export default {
+  components: { TransitionAppear },
     
 }
 </script>
@@ -24,20 +28,21 @@ export default {
     justify-content: space-between;
     align-items: flex-end;
     z-index: 1000;
+    mix-blend-mode: difference;
     
     
 
     &__projects {
         font-size: 1.625rem;
         font-weight: 100;
-        /* mix-blend-mode: difference; */
+        mix-blend-mode: difference;
         /* color: var(--accent-color); */
 
         .footer-link {
-            color: var(--accent-color);
+            color: #FFF;
             font-size: 1rem;
             text-decoration: none;
-            mix-blend-mode: difference;
+            
 
             
             @include phone {

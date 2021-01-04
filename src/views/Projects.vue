@@ -93,6 +93,9 @@ export default {
         @include desktop {
             grid-template-columns: repeat(6, 1fr);
         }
+        @include desktopxl {
+            grid-template-columns: repeat(8, 1fr);
+        }
 
         .project {
             position: relative;
@@ -147,7 +150,7 @@ export default {
                 /* margin: .5rem 0 1rem 0; */
                 padding: 1rem;
                 /* mix-blend-mode: difference; */
-                font-size: 1.15rem;
+                font-size: 1rem;
                 font-weight: 300;
                 color: var(--main-color);
                 border-radius: $border-radius;

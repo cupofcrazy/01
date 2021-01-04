@@ -39,7 +39,7 @@
 }
 
 html {
-    font-family: $font-sans-serif, Avenir, Helvetica, Arial, sans-serif;
+    font-family: $font-sans-serif;
 }
 
 body {
@@ -53,7 +53,9 @@ body {
 }
 
 
-
+a.link {
+    color: #a7a7a7;
+}
 
 .flex {
     display: flex;
@@ -65,13 +67,35 @@ body {
     background-color: transparent;
     font-size: 1rem;
     cursor: pointer;
+
+    &.underline {
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            width: 0%;
+            height: 1px;
+            background: var(--accent-color);
+            transition: width .5s ease;
+        }
+
+        &:hover {
+            &:after {
+                width: 100%;
+                transition: width .5s ease;
+            }
+        }
+    }
 }
 
 // CSS Transitions
 .fade-enter-active, .fade-leave-active {
-    transition: all .1s ease;
+    transition: all .5s ease;
 }
 .fade-enter, .fade-leave-to {
     opacity: 0;
-    // transition: all .5s ease;
+    transition: all .5s ease;
 }

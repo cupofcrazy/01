@@ -1,20 +1,24 @@
 <template>
-    <header class="header">
-        <div>
-            <router-link class="header-link" to="/" v-if="!isProjectPage">Tyler Mitchell <span v-if="$route.name === 'Home'">is a New York <br/>based photographer and <br /> filmmaker</span></router-link>
-             <button class="base-button header-link" to="/" v-else @click="$router.go(-1)"><arrow-icon rotate="180" :style="{ width: '20px', height: '20px' }" aria-label="Go Back"/></button>
-        </div>
-        <router-link class="header-link" to="/" v-if="isProjectPage">Tyler Mitchell</router-link>
-        <router-link class="header-link" to="/profile">Profile</router-link>
-    </header>
+    <transition-appear>
+        <header class="header">
+            <div>
+                <router-link class="header-link" to="/" v-if="!isProjectPage">Tyler Mitchell <transition-appear><span v-if="$route.name === 'Home'">is a New York <br/>based photographer and <br /> filmmaker</span></transition-appear></router-link>
+                <button class="base-button header-link" to="/" v-else @click="$router.go(-1)"><arrow-icon rotate="180" :style="{ width: '20px', height: '20px' }" aria-label="Go Back"/></button>
+            </div>
+            <router-link class="header-link" to="/" v-if="isProjectPage">Tyler Mitchell</router-link>
+            <router-link class="header-link" to="/profile">Profile</router-link>
+        </header>
+    </transition-appear>
 </template>
 
 <script>
 import ArrowIcon from '@/components/ui/ArrowIcon.vue'
+import TransitionAppear from './TransitionAppear.vue'
 
 export default {
     components: {
-        ArrowIcon
+        ArrowIcon,
+        TransitionAppear
     },
     computed: {
         isProjectPage() {

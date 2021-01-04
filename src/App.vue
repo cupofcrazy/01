@@ -48,23 +48,23 @@ export default {
 
 <style lang="scss">
 @font-face {
-    font-family: 'Helvetica Neue';
+    font-family: 'Neue Haas Grotesk Display Pro';
     font-weight: 100;
     font-display: swap;
-    src: url('./assets/fonts/HelveticaNeueLight.woff') format('woff');
-    src: url('./assets/fonts/HelveticaNeueLight.woff2') format('woff2');
+    src: url('./assets/fonts/NeueHaasDisplay-Roman.woff') format('woff');
+    /* src: url('./assets/fonts/NeueMontreal-Regular.woff2') format('woff2'); */
 }
-@font-face {
-    font-family: 'Helvetica Neue';
+
+ /* @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
     font-weight: 300;
     font-display: swap;
-    src: url('./assets/fonts/HelveticaNeueMedium.woff') format('woff');
-    src: url('./assets/fonts/HelveticaNeueMedium.woff2') format('woff2');
-}
+    src: url('./assets/fonts/NeueHaasDisplay-Medium.woff') format('woff');
+} */
+ 
 @import '@/assets/scss/main.scss';
 
 #app {
-  /* font-family: 'Neue Montreal', $font-sans-serif, Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--main-color);

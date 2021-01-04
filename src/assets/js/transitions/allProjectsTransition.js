@@ -20,11 +20,11 @@ export default {
             duration: 1,
             y: 30,
             stagger: .025,
-            scale: .15,
+            scale: .5,
             autoAlpha: 0,
             clipPath: 'inset(100% 0 0 0)',
             ease: 'expo.out'
-        }, '<.15')
+        }, '<.1')
     },
     leave(el, done) {
         TweenMax.to(el, {

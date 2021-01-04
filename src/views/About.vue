@@ -33,6 +33,38 @@
 
         </p>
       </div>
+
+      <section class="about__section">
+        <h1>Selected Bibliography</h1>
+        <ul>
+          <li>New York Times</li>
+          <li>The New Yorker</li>
+          <li>Artnet</li>
+          <li>The Guardian</li>
+          <li> NPR</li>
+          <li>Vogue</li>
+          <li>Dazed</li>
+          <li>Creative Review</li>
+          <li>WSJ</li>
+        </ul>
+      </section>
+
+      <section class="about__section">
+        <h1>About this site</h1>
+        <p>This site was designed and developed by <a class="link" target="_blank" href="https://tobiii.ninja">Tobi Balogun</a>.<br />Images and text are the properties of Tyler Mitchell. This is in no way a collaboration of any kind.</p>
+        <p>Duration: 1½ week</p>
+        <p>I created this site as a design exercise / side project, because COVID 🤪, and decided to bring it to life with code</p>
+        <p>This is not the official website of Tyler Mitchell. <a class="link" target="_blank" href="https://tylermitchell.co">Click here</a> to visit the official website</p>
+      </section>
+
+      <section class="about__section">
+        <h1>Sources / Tools</h1>
+        <p><b>Design:</b> Adobe XD</p>
+        <p><b>Front-end:</b> Vue.js</p>
+        <p><b>Backend:</b> Sanity CMS</p>
+        <p><b>Animation / Transitions:</b> GSAP (GreenSock)</p>
+        <p><b>Source code:</b> Not yet available.</p>
+      </section>
     </div>
   </div>
 </template>
@@ -88,13 +120,41 @@ export default {
       
     }
     h1 {
-      font-weight: 100;
       width: 70%;
       font-size: 13vw;
       text-align: right;
       line-height: 1;
         
       }
+  }
+
+  &__section {
+    h1 {
+      font-size: 1.625rem;
+      margin: 1rem 0 .5rem 0;
+
+      @include tablet {
+        font-size: 2.625rem;
+      }
+    }
+
+    @include tablet {
+        font-size: 1.25rem;
+      }
+
+    ul {
+      font-size: 1rem;
+
+      @include tablet {
+        font-size: 1.625rem;
+      }
+
+      li {
+        list-style-type: none;
+        margin: 0 0 .25rem 0;
+      }
+    }
+    
   }
 
   &__info {
@@ -109,7 +169,7 @@ export default {
       margin: 0 0 1rem 0;
 
       @include desktop {
-        font-size: 1.625rem;
+        font-size: 1.25rem;
       }
 
      
@@ -123,8 +183,8 @@ export default {
       border-radius: $border-radius;
       overflow: hidden;
 
-       @include desktop {
-        width: 640px;
+       @include tablet {
+        width: 480px;
       }
 
       img {

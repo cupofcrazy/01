@@ -10,7 +10,7 @@
            
             <div class="container">
                 <h1 class="project-info__title">{{ project.title }}</h1>
-                <button class="base-button project-info__button" @click="openProjectDetails" aria-label="See Details">See Details</button>
+                <button class="base-button project-info__button underline" @click="openProjectDetails" aria-label="See Details">See Details</button>
 
             </div>
             <div class="project-info__index">{{ slideIndex }} — {{ totalSlides }}</div>
