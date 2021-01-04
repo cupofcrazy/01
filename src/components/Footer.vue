@@ -4,7 +4,7 @@
             <div class="footer__projects">
                 <router-link class="footer-link" :to="{ name: 'Projects' }">Photography</router-link>
             </div>
-            <div class="footer__circle"></div>
+            <button class="footer__circle" ref="themeChangeButton" @click="toggleTheme"></button>
         </div>
     </transition-appear>
 </template>
@@ -13,6 +13,24 @@
 import TransitionAppear from './TransitionAppear.vue'
 export default {
   components: { TransitionAppear },
+  methods: {
+      toggleTheme() {
+          // Change page and document's overall theme (including address bar)
+          document.body.classList.toggle('dark')
+          if (document.body.classList.contains('dark')) {
+              this.$setTheme('--main-color', '#111111')
+              this.$setTheme('--accent-color', '#FFFFFF')
+              document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111')
+          } else {
+              this.$setTheme('--main-color', '#FFFFFF')
+              this.$setTheme('--accent-color', '#111111')
+              document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF')
+          }
+      }
+  },
+  created() {
+      
+  }
     
 }
 </script>
@@ -36,7 +54,6 @@ export default {
         font-size: 1.625rem;
         font-weight: 100;
         mix-blend-mode: difference;
-        /* color: var(--accent-color); */
 
         .footer-link {
             color: #FFF;
@@ -53,12 +70,13 @@ export default {
         }
     }
     &__circle {
+        cursor: pointer;
+        border: 0;
         width: 24px;
         height: 24px;
         background: var(--project-main-color);
         border-radius: 50%;
         transition: all 1s ease;
-        /* border: 1px solid #FFF; */
     }
 }
 </style>

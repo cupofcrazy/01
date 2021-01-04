@@ -105,6 +105,7 @@ export default {
     align-items: flex-end;
     justify-content: space-between;
     margin: 0 0 1rem 0;
+    color: var(--accent-color);
     
 
     h2 {
@@ -132,26 +133,45 @@ export default {
     h1 {
       font-size: 1.625rem;
       margin: 1rem 0 .5rem 0;
+      color: var(--accent-color);
 
       @include tablet {
         font-size: 2.625rem;
       }
+
+      @include desktop {
+        font-size: 4.625rem;
+      }
     }
 
-    @include tablet {
-        font-size: 1.25rem;
-      }
-
     ul {
+      color: var(--accent-color);
       font-size: 1rem;
 
       @include tablet {
         font-size: 1.625rem;
       }
 
+      @include desktop {
+        font-size: 2.25rem;
+      }
+
       li {
         list-style-type: none;
         margin: 0 0 .25rem 0;
+      }
+    }
+
+    p {
+      color: var(--accent-color);
+      font-size: 1rem;
+
+      @include tablet {
+        font-size: 1.625rem;
+      }
+
+      @include desktop {
+        font-size: 2.25rem;
       }
     }
     
@@ -160,6 +180,7 @@ export default {
   &__info {
     display: flex;
     flex-direction: column;
+    color: var(--accent-color);
 
     p {
       
@@ -168,8 +189,12 @@ export default {
       font-weight: 100;
       margin: 0 0 1rem 0;
 
+      @include tablet {
+        font-size: 1.625rem;
+      }
+
       @include desktop {
-        font-size: 1.25rem;
+        font-size: 2.25rem;
       }
 
      

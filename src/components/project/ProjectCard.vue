@@ -82,12 +82,11 @@ export default {
         justify-content: space-between;
         padding: .5rem;
         background-color: var(--main-color);
-        color: var(--main-color);
+       
         border-radius: $border-radius;
-        /* mix-blend-mode: difference; */
 
         h2 {
-            /* text-transform: uppercase; */
+            color: #FFF;
             font-size: 1.25rem;
             width: 100%;
             font-weight: 300;
@@ -95,11 +94,12 @@ export default {
         }
 
         p {
+            color: #FFF;
             margin-top: 2.625rem;
             font-size: 1rem;
             text-align: right;
             font-weight: 300;
-            color: var(--main-color);
+            
         }
 
     }

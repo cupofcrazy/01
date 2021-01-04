@@ -32,7 +32,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import pageTitleMixin from '@/mixins/pageTitle'
 import { projectTransition } from '@/assets/js/transitions'
 
 
@@ -41,8 +40,6 @@ export default {
         ArrowIcon: () => import('@/components/ui/ArrowIcon.vue'),
         ProjectDetails: () => import('@/components/project/ProjectDetails.vue')
     },
-    mixins: [ pageTitleMixin ],
-    title() { return this.project.title },
     data() {
         return {
             activeSlide: 0,
@@ -80,13 +77,8 @@ export default {
             
             this.project =  this.projects.find(project => project.slug === this.$route.params.id)
 
-            this.$setPageTitle(this.project.title)
-            // const root = document.documentElement;
-
+            this.$setPageTitle(`Photography: ${ this.project.title }`)
             this.$setTheme('--project-main-color', this.project.thumbnail.metadata.palette.darkVibrant.background)
-            // this.$setTheme('--project-accent-color', this.project.thumbnail.metadata.palette.lightVibrant.foreground)
-
-            console.log(this.project)
 
             
         } catch (err) {

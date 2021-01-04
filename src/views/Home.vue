@@ -1,9 +1,7 @@
 <template>
   <div class="home" ref="home">
     <div class="container">
-      <!-- <h1>Selected Works</h1> -->
       <project-card :project="randomProject" />
-      <!-- <router-link class="projects-link" to="/projects">See all works →</router-link> -->
     </div>
     
     
@@ -12,7 +10,6 @@
 
 <script>
 
-// import 'locomotive-scroll/dist/locomotive-scroll.min.css'
 import { mapState } from 'vuex'
 import ProjectCard from '@/components/project/ProjectCard.vue'
 import { indexTransition } from '@/assets/js/transitions'
@@ -42,8 +39,7 @@ export default {
   },
   created() {
     
-
-    // console.log(this.arts)
+    this.$setPageTitle('Home')
   },
   mounted() {
     this.$setTheme('--project-main-color', '#111111')
@@ -58,9 +54,6 @@ export default {
 .home {
   width: 100%;
   height: 100vh;
-  /* position: fixed;
-  top: 0;
-  left: 0; */
 
 
   .container {

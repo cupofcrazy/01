@@ -14,11 +14,8 @@
 // import 
 import VHeader from '@/components/Header.vue'
 import VFooter from './components/Footer.vue'
-// import { defaultTransition } from '@/assets/js/transitions'
-// import locomotiveMixin from '@/mixins/smoothScroll'
 
 export default {
-  // mixins: [locomotiveMixin],
   components: {
     VHeader, VFooter
   },
@@ -33,11 +30,11 @@ export default {
   async created() {
     try {
       await this.$store.dispatch('fetchProjects')
-      // console.log(this.$store.state.projects)
     } catch (err) {
       console.error({ err })
     }
-    // console.log(this.$refs.view)
+    console.log('%c dev by https://tobiii.ninja', 'color: blue;')
+    console.log('%c    ', 'font-size: 300px; padding: 30px; background: url(https://media.giphy.com/media/Z3aQVJ78mmLyo/giphy.gif);')
   },
   mounted() {
     
@@ -54,13 +51,6 @@ export default {
     src: url('./assets/fonts/NeueHaasDisplay-Roman.woff') format('woff');
     /* src: url('./assets/fonts/NeueMontreal-Regular.woff2') format('woff2'); */
 }
-
- /* @font-face {
-    font-family: 'Neue Haas Grotesk Display Pro';
-    font-weight: 300;
-    font-display: swap;
-    src: url('./assets/fonts/NeueHaasDisplay-Medium.woff') format('woff');
-} */
  
 @import '@/assets/scss/main.scss';
 
@@ -68,6 +58,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--main-color);
-  /* padding: 1rem; */
 }
 </style>

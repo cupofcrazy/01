@@ -74,7 +74,7 @@ export default {
     overflow-y: scroll;
 
     &-close {
-        background-color: var(--main-color);
+        background-color: #FFF;
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -98,7 +98,7 @@ export default {
             font-weight: 100;
             letter-spacing: -1px;
             text-align: center;
-            color: var(--main-color);
+            color: #FFF;
 
             @include phone {
                 font-size: 2rem;
@@ -118,7 +118,7 @@ export default {
             font-weight: 100;
             font-size: 1rem;
             text-align: center;
-            color: var(--main-color);
+            color: #FFF;
 
             @include tablet {
                 font-size: 1.25rem;
@@ -155,7 +155,6 @@ export default {
                 }
             }
             img {
-                /* transform: scale(.95); */
                 object-fit: cover;
                 width: 100%;
                 height: 100%;

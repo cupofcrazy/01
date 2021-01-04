@@ -12,8 +12,8 @@
 }
 
 :root {
-    --main-color: #FFF;
-    --accent-color: #212929;
+    --main-color: #FFFFFF;
+    --accent-color: #111111;
     --secondary-color: #EEEEEE;
     --project-main-color: #FFF;
     --project-accent-color: #111;
@@ -63,6 +63,7 @@ a.link {
 
 .base-button {
     font-family: inherit;
+    color: var(--accent-color);
     border: 0;
     background-color: transparent;
     font-size: 1rem;

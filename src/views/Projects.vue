@@ -42,7 +42,7 @@ export default {
         }
     },
     created() {
-        this.$setPageTitle('Projects')
+        this.$setPageTitle('Photography')
     },
     mounted() {
         this.$setTheme('--project-main-color')
@@ -55,13 +55,13 @@ export default {
 
 <style lang="scss" scoped>
 .projects {
-    /* background-color: var(--main-color); */
     .container {
         padding: 10rem 1rem 10rem 1rem;
     }
     &__heading {
         margin: 0  0 3rem 0;
         h1 {
+            color: var(--accent-color);
             font-size: 2.625rem;
             font-weight: 100;
             width: 90%;
@@ -147,12 +147,10 @@ export default {
                 top: 0;
                 z-index: 100;
                 width: 85%;
-                /* margin: .5rem 0 1rem 0; */
-                padding: 1rem;
-                /* mix-blend-mode: difference; */
+                padding: .75rem;
                 font-size: 1rem;
                 font-weight: 300;
-                color: var(--main-color);
+                color: #FFF;
                 border-radius: $border-radius;
                 
             }
