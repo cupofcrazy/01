@@ -1,4 +1,4 @@
-# 01
+# Tyler Mitchell Photography Portfolio
 
 ## Project setup
 ```
