@@ -1,160 +1,142 @@
 <template>
-    <div class="projects">
-        <div class="container">
-            <div class="projects__heading">
-                <h1>Photography</h1>
-            </div>
-
-            <ul class="projects__links">
-                <li v-for="project in projects" :key="project.id" class="link">
-                    <router-link :to="{ name: 'Project', params: { id: project.slug }}">
-                        <div class="project">
-                            <div class="project__info">
-                                <p>{{ project.title }}</p>
-                            </div>
-                            <div class="project__image">
-                                <img :src="project.thumbnail.url" alt="Some Caption for an image" />
-                                <!-- <lazy-image :src="project.thumbnail.url" alt="Some Caption for an image" :aspectRatio="project.thumbnail.metadata.dimensions.aspectRatio" 
-                                :color="project.thumbnail.metadata.palette.dominant.background" /> -->
-
-                            </div>
-                            
-                        </div>
-                    </router-link>
-                </li>
-            </ul>
+  <div class="projects">
+    <div class="container">
+      <div class="projects__intro">
+        <p>
+          A list and series of projects I have worked on.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Nisi suscipit expedita facere tempora consequuntur
+        </p>
+      </div>
+      <header class="projects__header">
+        <div class="projects__logo">
+          <img src="@/assets/images/logo.png" alt="Logo">
         </div>
+        <h1 class="projects__title">Projects</h1>
+      </header>
+
+
+      <div class="project__list">
+        <div v-for="project in projects" :key="project.slug.current" class="project">
+          <router-link :to="{ name: 'Project', params: { slug: project.slug.current }}">
+            <div class="project__thumbnail">
+              <lazy-image :src="project.thumbnail.url"
+                :alt="project.title"
+                :aspectRatio="project.thumbnail.metadata.dimensions.aspectRatio"
+                :color="project.thumbnail.metadata.palette.dominant.background" />
+            </div>
+            <h2 class="project__title">{{ project.title }}</h2>
+          </router-link>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-
 import { mapState } from 'vuex'
-import { allProjectsTransition } from '@/assets/js/transitions'
 
 export default {
-    methods: {
-        enter(el, done) {
-            allProjectsTransition.enter(el, done)
-        },
-        leave(el, done) {
-            allProjectsTransition.leave(el, done)
-        }
-    },
-    created() {
-        this.$setPageTitle('Photography')
-    },
-    mounted() {
-        this.$setTheme('--project-main-color')
-    },
-    computed: {
-        ...mapState(['projects'])
-    }
-}
+  methods: {},
+  created() {},
+  computed: {
+    ...mapState(['projects'])
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .projects {
-    .container {
-        padding: 10rem 1rem 10rem 1rem;
+  .container {
+    padding: 4rem 1rem 4rem 1rem;
+  }
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  &__title {
+    font-size: 12vw;
+    font-weight: 100;
+    color: var(--accent-color);
+  }
+  &__intro {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 2.625rem 0 1rem 0;
+
+    p {
+      text-indent: 1.625rem;
+      grid-column: 3 / -1;
+      font-size: 1.5rem;
+      color: var(--accent-color);
+
+      @include gt-sm {
+        grid-column: 7 / -1;
+        font-size: 3rem;
+      }
     }
-    &__heading {
-        margin: 0  0 3rem 0;
-        h1 {
-            color: var(--accent-color);
-            font-size: 2.625rem;
-            font-weight: 100;
-            width: 90%;
-            line-height: 0.95;
-            margin: 0 0 1rem 0;
-            letter-spacing: -2px;
+  }
+  &__logo img {
+    display: block;
+    width: 6rem;
+    
+  }
+}
 
-            @include phone {
-                font-size: 3.625rem;
-            }
+.project {
+  margin: 0 0 1rem 0;
+  
 
-             @include tablet {
-                font-size: 5.625rem;
-            }
 
-            @include desktop {
-                font-size: 12vw;
-            }
-        }
+  &:hover {
+    .project__title {
+      color: var(--accent-color);
     }
-    &__links {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+  }
 
-        @include tablet {
-            grid-template-columns: repeat(4, 1fr);
-        }
-        @include desktop {
-            grid-template-columns: repeat(6, 1fr);
-        }
-        @include desktopxl {
-            grid-template-columns: repeat(8, 1fr);
-        }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 1rem;
+    margin: 1rem 0 0 0;
 
-        .project {
-            position: relative;
-
-            &::after {
-                content: '';
-                position: absolute;
-                z-index: 99;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                background: #000000;
-                opacity: .25;
-            }
-
-            &__image {
-                width: 100%;
-                height: 200px;
-                overflow: hidden;
-                border-radius: $border-radius;
-
-                @include phone {
-                    height: 240px;
-                }
-
-                @include tablet {
-                    height: 320px;
-                }
-
-                &:hover {
-                    img {
-                        transition: all .3s ease;
-                        transform: scale(1.15);
-                    }
-                }
-                
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: all .3s ease;
-                }
-            }
-            &__info {
-                position: absolute;
-                left: 0;
-                top: 0;
-                z-index: 100;
-                width: 85%;
-                padding: .75rem;
-                font-size: 1rem;
-                font-weight: 300;
-                color: #FFF;
-                border-radius: $border-radius;
-                
-            }
-        }
+    @include gt-sm {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem;
     }
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 100;
+    color: #b4b4b4;
+    margin: .5rem 0 0 0;
+
+    @include gt-sm {
+      font-size: 1rem;
+      
+      /* letter-spacing: -1px; */
+    }
+  }
+
+  &__thumbnail {
+    overflow: hidden;
+    border-radius: 4px;
+    /* opacity: 0; */
+
+    @include gt-sm {
+      
+    }
+  }
+}
+
+ul li {
+  display: block;
+}
+
+a {
+  display: block;
 }
 </style>

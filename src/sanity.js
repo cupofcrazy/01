@@ -2,22 +2,27 @@ import sanityClient from '@sanity/client'
 
 
 const options = {
-    projectId: process.env.VUE_APP_SANITY_PROJECT_ID || 'eefpfqmk',
+    projectId: '1zcn1od1',
     dataset: 'production',
     useCdn: true
 }
 
-export const query = `*[_type == "photography"] {
-    "id": _id,
-    year,
+export const query = `
+  *[_type == "caseStudy"] {
     title,
-    "slug": slug.current,
+    slug,
     "thumbnail": thumbnail.asset->,
     description,
-    images[] {
-      asset->,
-      caption
+    link,
+    tools,
+    modules[] {
+      "type": _type,
+      caseStudyText,
+      "image": image.asset->,
+      "image1": image1.asset->,
+      "image2": image2.asset->
     }
-}`
+  }
+`
 
 export default sanityClient(options)

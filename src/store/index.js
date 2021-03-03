@@ -16,6 +16,7 @@ export default new Vuex.Store({
   actions: {
     async fetchProjects({ commit }) {
       const projects = await sanityClient.fetch(query)
+      console.log({ projects })
       commit('SET_PROJECTS', projects)
     }
   },

@@ -1,3 +1,5 @@
+@import './media';
+
 // Screen sizes
 $screen-xs: 320px;
 $screen-sm: 400px;
@@ -10,7 +12,7 @@ $border-radius: 4px;
 
 
 // Fonts
-$font-sans-serif: 'Neue Haas Grotesk Display Pro', Avenir, Helvetica, Arial, sans-serif;
+$font-sans-serif: 'Neue Haas Grotesk', Avenir, Helvetica, Arial, sans-serif;
 $font-serif: 'Margo', serif;
 
 //Layout
