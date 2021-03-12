@@ -43,16 +43,23 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 router.beforeResolve((to, from, next) => {
-  console.log('beforeResolve')
-  if (to.name) NProgress.start()
+  // console.log('beforeResolve')
+  if (to.name) NProgress.inc(0.4)
   next()
 })
 router.afterEach(() => {
-  console.log('afterEach')
+  // console.log('afterEach')
   NProgress.done()
 })
 

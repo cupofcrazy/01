@@ -29,7 +29,7 @@ export default {
   height: 1.25rem;
   background-color: var(--accent-color);
   position: fixed;
-  left: 0;
+  right: 0;
   bottom: 0;
   margin: 1rem;
   border: 2px solid var(--accent-color);

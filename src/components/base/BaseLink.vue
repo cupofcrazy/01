@@ -1,7 +1,10 @@
 <template>
-  <router-link :to="to" class="base__link">
+  <router-link :to="to" class="base__link" v-if="!isButton">
     <slot />
   </router-link>
+  <button class="base__link" v-else @click="click">
+    <slot />
+  </button>
 </template>
 
 <script>
@@ -10,9 +13,18 @@ export default {
   props: {
     to: {
       type: [String, Object],
-      required: true,
+      required: false
     },
+    isButton: {
+      type: Boolean,
+      required: false
+    }
   },
+  methods: {
+    click() {
+      this.$emit('click')
+    }
+  }
 };
 </script>
 
@@ -26,7 +38,7 @@ export default {
   }
   &.router-link-exact-active {
     color: var(--accent-color);
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 }
 </style>

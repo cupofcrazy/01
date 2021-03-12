@@ -8,7 +8,7 @@
     <div class="header__r">
       <ul class="header__links">
         <li><base-link :to="{ name: 'Archive' }">Archive</base-link></li>
-        <li><base-link :to="{ name: 'Projects' }">Projects</base-link></li>
+        <li><base-link @click="openMenu" isButton>Projects</base-link></li>
         <li><base-link :to="{ name: 'Info' }">Info</base-link></li>
       </ul>
     </div>
@@ -20,6 +20,11 @@ import BaseLink from './base/BaseLink.vue';
 
 export default {
   components: { BaseLink },
+  methods: {
+    openMenu() {
+      this.$store.dispatch('setProjectsMenuOpen', true)
+    }
+  },
   computed: {},
 };
 </script>
@@ -30,11 +35,13 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--main-color);
+  width: 100%;
+  /* background-color: var(--main-color); */
   z-index: 10;
+  font-size: 1rem;
 
   @include gt-sm {
     font-size: 2rem;

@@ -9,11 +9,11 @@ export default {
             autoAlpha: 0,
             ease: 'expo.out',
         })
-        .from('.project', {
+        .from('.project__title', {
             duration: .75,
-            scale: 0.15,
-            y: 100,
-            clipPath: 'inset(100% 0 0 0)',
+            scale: .8,
+            yPercent: 100,
+            clipPath: 'inset(0% 100% 0% 0%)',
             // autoAlpha: 0,
             ease: 'expo.out'
         })
